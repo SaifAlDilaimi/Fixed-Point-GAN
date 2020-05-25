@@ -1,0 +1,134 @@
+\usepackage{babel}
+
+%Word wrap (silbentrennung)
+\tolerance=1
+\emergencystretch=\maxdimen
+\hyphenpenalty=10000
+\hbadness=10000
+
+\usepackage[utf8]{inputenc}
+\usepackage[german=quotes]{csquotes}
+\usepackage[T1]{fontenc}
+\usepackage[page]{totalcount}
+\usepackage[toc]{appendix}
+\usepackage{amsmath}
+\usepackage{url}
+\usepackage{geometry}
+ \geometry{
+     total={170mm,257mm}
+ }
+ 
+%% Appendex redefine
+\renewcommand*\appendixpagename{Anhang}
+\renewcommand*\appendixtocname{Anhang}
+
+%% Enumeration
+\usepackage{enumitem}% http://ctan.org/pkg/enumitem
+
+%% Table packages
+\usepackage{tabularx,booktabs,ragged2e,caption}
+\newcolumntype{L}{>{\RaggedRight\arraybackslash}X}
+\newcolumntype{C}{>{\Centering\arraybackslash}X}
+\usepackage{adjustbox}
+
+%Colors
+\usepackage[dvipsnames,svgnames,x11names,table,xcdraw]{xcolor}
+
+\definecolor{rubgray}{HTML}{F3F3F3}
+\definecolor{rubblue}{HTML}{003560}
+\definecolor{rubgreen}{HTML}{8dae10}
+
+%% PDF and orientation
+\usepackage{pdfpages}
+\usepackage{pdflscape}
+
+%% Code listing
+\usepackage{inconsolata}
+
+\definecolor{pblue}{rgb}{0.13,0.13,1}
+\definecolor{pgreen}{rgb}{0,0.5,0}
+\definecolor{pred}{rgb}{0.9,0,0}
+\definecolor{pgrey}{rgb}{0.46,0.45,0.48}
+
+\usepackage{listings}
+\lstset{language=Java,
+  showspaces=false,
+  showtabs=false,
+  breaklines=true,
+  showstringspaces=false,
+  breakatwhitespace=true,
+  commentstyle=\color{pgreen},
+  keywordstyle=\color{pblue},
+  stringstyle=\color{pred},
+  basicstyle=\ttfamily,
+  numbers=left,
+  firstnumber=1,
+  numberfirstline=true
+}
+
+
+%% footer
+\usepackage{scrlayer-scrpage}
+\setlength\footheight{15pt}
+\clearpairofpagestyles
+\ifoot*{\pagemark}
+\cfoot*{Anbindung einer alternativen Quelldatenbank\\
+ für Krankheits-Entitäten für die Biomarker-Datenbank BIONDA}
+\ofoot*{}
+\setkomafont{pageheadfoot}{\sffamily\footnotesize}
+\addtokomafont{pagenumber}{\sffamily\footnotesize}
+
+%Pages counter
+\renewcommand\pagemark{{%
+    \textbf{\MakeUppercase{\pagename}}
+    \usekomafont{pagenumber}%
+    {\thepage} | \totalpages
+}}
+
+%% rules on every page
+\DeclareNewLayer[
+    background,
+    bottommargin,
+    addvoffset=-\footheight,
+    addvoffset=-.5ex,
+    mode=picture,
+    contents=\putUL{\textcolor{rubgray}{\rule[-\layerheight]{\layerwidth}{\layerheight}}}
+]{bottomrule}
+\DeclareNewLayer[
+    clone=bottomrule,
+    textarea,
+    voffset=0pt,
+    height=\paperheight,
+    addhoffset=\textwidth,
+    addhoffset=1ex
+]{rightrule}
+\AddLayersToPageStyle{@everystyle@}{bottomrule,rightrule}
+
+%% logo on the title page
+\usepackage{graphicx}
+\DeclareNewLayer[
+    clone=rightrule,
+    contents=\putUL{\raisebox{-\height}{\makebox[9mm][r]{\includegraphics[scale=.8]{bilder/logo-rub-102.jpg}}}}
+]{titlepagelogo}
+\DeclarePageStyleByLayers{titlepage}{titlepagelogo}
+%%
+
+
+% Change chapter, section and subsections
+\setkomafont{chapter}{\normalfont\LARGE\sffamily\bfseries\color{rubblue}}
+\addtokomafont{section}{\Large\color{rubgreen}}
+\addtokomafont{subsection}{\large\color{rubgreen}}
+\addtokomafont{subsubsection}{\normalsize\color{rubblue}}
+
+% Modify chapter to stop doing a pagebreak
+\usepackage{etoolbox}
+%\makeatletter
+%\patchcmd{\scr@startchapter}{\if@openright\cleardoublepage\else\clearpage\fi}{}{}{}
+%\makeatother
+
+% Stops the reset of the footnode number on each chapter
+\usepackage{chngcntr}
+\counterwithout{footnote}{chapter}
+
+% Removes indent on new paragraph and adds a new line
+\usepackage[parfill]{parskip}

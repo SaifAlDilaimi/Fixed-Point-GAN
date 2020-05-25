@@ -1,0 +1,40 @@
+\chapter*{Zielbestimmung}
+Es soll eine alternative Krankheits-Entitäten Datenbank anstatt der bestehenden UniProt-Anbindung recherchiert und in die bestehende Web-Applikation \enquote{BIONDA} eingebunden werden. Das Projekt was unter dem Arbeitstitel \enquote{Anbindung einer alternativen Quelldatenbank für Krankheits-Entitäten für die Biomarker-Datenbank} realisiert wird, soll in der Lage sein folgende Aufgaben zu erfüllen.
+
+\begin{itemize}
+\item{Alternative Quelldatenbank für Krankheiten und evtl. Krankheitshierarchien mit BIONDA ansprechen.}
+\item{Quelldatenbank automatisch mit neue Krankheiten aktualisieren.}
+\item{Quelldatenbank liefert Daten wie Krankheit, Marker, Art des Markers, Genauigkeit, Suchquelle und mehr.}
+\item{Abbildung der Krankheiten in der Quelldatenbank als Hierarchie oder Auflistung.}
+\end{itemize}
+
+Das Projekt ist in zwei Aufgabenbereiche aufgeteilt. Zum einen die Einbindung einer alternativen Quelldatenbank (Datenbank-Routine) und zum anderen die Anpassung der Web-Applikation (Client-Anwendung) \enquote{BIONDA}. In den nächsten Abschnitten werden die genauen Anforderungen für das Projekt festgelegt.
+
+\section*{Muss-Kriterien}
+
+\begin{itemize}
+\item{Der Aufbau der Anwendung muss modular sein, so dass ein einfaches Ersetzen der einzelnen Komponenten möglich ist.}
+\item{Die Anwendung muss über zwei Komponenten verfügen: Datenbank-Routine und Client-Anwendung.}
+\item{Die Client-Anwendung muss mithilfe von PHP angepasst werden.}
+\item{Die Datenbank-Routine muss eine MySQL-Datenbank ansprechen können.}
+\item{Es muss eine geeignete Quelldatenbank für die Datenbank-Routine recherchiert werden.}
+\item{Es müssen Kriterien für die Auswahl einer Quelldatenbank definiert werden.}
+\item{Es muss eine Entscheidung getroffen  werden, ob die Krankheiten der Quelldatenbank als Hierarchie oder Auflistung gespeichert werden.}
+\item{Die Datenbank-Routine muss eine Parsing-Funktionalität besitzen, um den Inhalt der Quelldatenbank auszulesen (API-Zugriff) und zu verarbeiten.}
+\item{Die Parsing-Funktionalität muss automatisiert angestoßen werden können, um Wartungsfrei zu sein.}
+\item{Die Parsing-Funktionalität muss neue Inhalte in der Quelldatenbank erkennen und an die Datenbank-Routine weiterleiten.}
+\end{itemize}
+
+\section*{Soll-Kriterien}
+
+\begin{itemize}
+\item{Die Datenbank-Routine soll ggf. neue Datenbankrelationen definieren oder bestehende anpassen.}
+\item{Die Krankheiten der Quelldatenbank sollen als Hierarchie gespeichert werden.}
+\item{Die Parsing-Funktionalität soll mit Perl implementiert werden.}
+\end{itemize}
+
+\section*{Kann-Kriterien}
+
+\begin{itemize}
+\item{Die Parsing-Funktionalität kann, wenn die API-Guidelines es vorbestimmen, mit einer anderen Sprache implementiert werden.}
+\end{itemize}

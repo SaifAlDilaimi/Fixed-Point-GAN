@@ -1,0 +1,34 @@
+\documentclass[
+  a4paper,
+  12pt,
+  titlepage,	
+  american,
+  bibliography=totoc,
+  footheight=15pt,
+  headheight=15pt,
+  oneside% seems to be a onesided layout
+]{scrbook}
+
+\include{Pakete}
+
+\begin{document}
+% Umbenennung bibtex
+\renewcommand{\bibname}{References}
+
+\include{Deckblatt}
+\include{Listings}
+\input{Introduction}
+\newpage
+\input{Methods}
+\newpage
+\input{Results}
+\newpage
+\input{Conclusion}
+\newpage
+\bibliography{literatur}
+\newpage
+\input{Anhang}
+\newpage
+\input{Unterschrift}
+
+\end{document}

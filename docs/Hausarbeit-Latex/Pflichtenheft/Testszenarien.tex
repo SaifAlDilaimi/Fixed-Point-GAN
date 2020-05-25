@@ -1,0 +1,55 @@
+\chapter*{Testszenarien}
+Die folgenden Tabellen stellen die Testfälle dar, die sich aus den Qualitätsanforderungen ableiten. Diese müssen nach der Implementierung des Projektes durchgeführt und erfolgreich durchlaufen werden. Jedes der folgenden Testszenarien muss auf allen unter Punkt 5.3 genannten Client-Betriebssystemen und Server-Betriebssystemen mit dem Ergebnis „bestanden“ durchlaufen werden.
+
+\section*{QS-Ziele}
+
+\begin{table}[!htbp]
+\centering
+\label{my-label}
+\begin{tabular}{|l|l|l|}
+\hline
+\rowcolor[HTML]{EFEFEF} 
+\multicolumn{1}{|c|}{\cellcolor[HTML]{EFEFEF}{\color[HTML]{333333} QS-Ziel}} & \multicolumn{1}{c|}{\cellcolor[HTML]{EFEFEF}{\color[HTML]{333333} Prüfung}} & \multicolumn{1}{c|}{\cellcolor[HTML]{EFEFEF}{\color[HTML]{333333} Bestanden}} \\ \hline
+Erweiterbarkeit                                                              & Integrierung von weiteren Funktionen                                        &                                                                               \\ \hline
+Fehlerrobustheit                                                             & s. Punkt 5.2                                                                &                                                                               \\ \hline
+Wartbarkeit                                                                  & Test durch zweiten Entwickler                                               &                                                                               \\ \hline
+\end{tabular}
+\caption*{QS-Ziele}
+\end{table}
+
+Des Weiteren muss eine Auswahl einer neuen alternativen Datenbank erfolgen. Da es sehr viele mögliche Datenbanken gibt, die der Aufgabenstellung entsprechen,  muss eine Entscheidung anhand von verschiedenen Kriterien getroffen werden. Die folgende Tabelle stellt fünf Kriterien dar, welche bei der Wahl der neuen alternativen Datenbank berücksichtigt werden müssen. Um eine Entscheidung treffen zu können müssen die verschiedenen Kriterien gewichtet werden, um besser abwägen zu können, welche der Möglichkeiten die bestmögliche ist. Die Gewichtung der verschiedenen Kriterien ist ebenfalls in der Tabelle abgebildet.
+ 
+\begin{table}[!htbp]
+\centering
+\label{my-label}
+\begin{tabular}{|l|l|l|}
+\hline
+\rowcolor[HTML]{EFEFEF} 
+\multicolumn{1}{|c|}{\cellcolor[HTML]{EFEFEF}{\color[HTML]{333333} Kriterium}} & \multicolumn{1}{c|}{\cellcolor[HTML]{EFEFEF}{\color[HTML]{333333} Faktor}} & \multicolumn{1}{c|}{\cellcolor[HTML]{EFEFEF}{\color[HTML]{333333} Rang}} \\ \hline
+Updatehäufigkeit & $\times 2$                                        &                       4                                                        \\ \hline
+Anzahl an Einträgen                                                             &                                                                $\times 5$ &        1                                                                       \\ \hline
+Kostenlos und frei zugänglich                                                                  & $\times 3$                                              &                                                                              3 \\ \hline
+Von öffentlicher Organisation
+& $\times 4$                                                               &                                                                              2 \\ \hline
+Suche anhand Trivialnamen
+& $\times 1$                                                               &                                                                              5 \\ \hline
+\end{tabular}
+\caption*{Kriterien der Quelldatenbank}
+\end{table}
+
+\newpage
+\section*{Fehlerrobustheit}
+
+Testszenarien können in den verschiedenen Projektphasen ermittelt bzw. erstellt werden. Die wichtigeten Testszenarien sind jedoch die, die am Ende für den Test der neu angebundenen Datenbank erfolgen. Durch diese wird sichergestellt, dass BIONDA durch die neu angebundene Datenbank dazu in der Lage ist, deutlich mehr Suchtreffer für diverse Krankheiten zu liefern.
+
+\begin{table}[h]
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{Fehler}                                                                                                                    & \textbf{Erwartete Reaktion}                                                                        & \textbf{Bestanden} \\ \hline
+\begin{tabular}[c]{@{}c@{}}Suche nach Krankheit mithilfe eines \\ Unterbegriffs zeigt nicht \\ korrekte Hierarchie an\end{tabular} & \begin{tabular}[c]{@{}c@{}}Gesamthierarchie anzeigen, \\ Fehler protokolliere\end{tabular}         &                    \\ \hline
+\begin{tabular}[c]{@{}c@{}}Suche nach Krankheit mithilfe des\\ Oberbegriffs zeigt nicht \\ korrekte Hierarchie an\end{tabular}     & \begin{tabular}[c]{@{}c@{}}Gesamthierarchie anzeigen, \\ Fehler protokollieren\end{tabular}        &                    \\ \hline
+\begin{tabular}[c]{@{}c@{}}Suche nach Biomarker, welcher einer \\ Krankheit gehört, \\ gibt falsche Krankheit an\end{tabular}      & \begin{tabular}[c]{@{}c@{}}Alternative Krankheiten anzeigen, \\ Fehler protokollieren\end{tabular} &                    \\ \hline
+\begin{tabular}[c]{@{}c@{}}Downloadskript konnte Quelldatenbank \\ nicht ansprechen\end{tabular}                                   & \begin{tabular}[c]{@{}c@{}}Fehler protokollieren, \\ Wiederholung in einer Stunde\end{tabular}     &                    \\ \hline
+\end{tabular}
+\caption*{Fehlerrobustheit}
+\end{table}

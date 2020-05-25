@@ -1,0 +1,37 @@
+\chapter*{Produktfunktionen}
+Da sich der Projektumfang hauptsächlich mit der Recherche und Anbindung einer alternativen Quelldatenbank in die bestehende Applikation \enquote{BIONDA} beschäftigt, müssen Anpassungen bzw. Erneuerungen an der Suche in \enquote{BIONDA} implementiert werden. Aus diesem Grund werden im folgenden die angepassten Produktfunktionalitäten näher erläutert. 
+
+Mit der Applikation \enquote{BIONDA} ist es möglich kostenfrei mithilfe von Biomarkern\footnote{Biomarker sind biologische Merkmale, die durch gewisse Prozesse gemessen werden können, um biologische Eigenschaften aufzuzeigen. Dabei kann es sich um Zellen, Gene, Proteine oder bestimmte Moleküle handeln.} oder einer Krankheits-Bezeichnung nach übereinstimmenden Treffern in wissenschaftlichen Veröffentlichungen zu suchen. Speziell hierfür werden die Abstracts jeder Veröffentlichung mithilfe von Text-Mining untersucht und inhaltlich für die Suche indexiert. Zusätzlich zu der Möglichkeit nach Krankheiten und Biomarkern zu suchen können die Treffer nach Wunsch auch auf \enquote{Sentence-wise}, \enquote{Abstract-wise} oder beides eingeschränkt werden. Die Suche liefert abhängig von der Suchkategorie zwar die selben Metadaten allerdings ist ihre Bedeutung anders zu deuten. In den folgenden Abschnitten werden die Suchtreffer und ihre Metadaten erläutert.
+
+\begin{itemize}
+\item{Krankheit} 
+\item{ID} 
+\item{Marker} 
+\item{Art des Markers (miRNA, Gene, Protein)}
+\item{Jahr der Veröffentlichung}
+\item{Co-Occurence-based pValue} 
+\item{Anzahl der Co-Occurence} 
+\item{Evidenz (Sentence oder Abstract)} 
+\end{itemize}
+
+\section*{Abstracts-wise}
+Die Suche wird mithilfe der Option \enquote{Abstract-wise} reguliert, sodass der gewünschte Biomarker oder die Krankheit in den Abstracts der Veröffentlichungen erwähnt wurde. Dadurch ist es möglich Relationen zwischen den Veröffentlichungen zu ziehen, um einen Wert zu erhalten, welcher die Zuverlässigkeit des Treffers widerspiegelt. Bei einer Suche mit \enquote{Abstract-wise} werden die Evidenzen, im vgl. zu \enquote{Sentence-wise} nicht direkt angezeigt, weil die Abstracts im ganzen indexiert werden.
+
+\section*{Sentence-wise}
+Die Suche wird mithilfe der Option \enquote{Sentence-wise} reguliert, sodass der gewünschte Biomarker oder die Krankheit in Sätzen des Abstracts erwähnt wurde. Dadurch ist es möglich Relationen zwischen den Sätzen zu ziehen, um einen Wert zu erhalten, welches die Zuverlässigkeit des Treffers widerspiegelt. Bei einer Suche mit \enquote{Sentence-wise} wird als Evidenz der Satz zurückgegeben, welches den Biomarker bzw. die Krankheit enthielt. Dadurch hat der Nutzer die Möglichkeit den Kontext der Veröffentlichung zu verstehen.
+
+\section*{Co-Occurence-based pValue}
+Eines der wichtigsten Metadaten in \enquote{BIONDA} ist der Co-Occurence-based pValue. Dieser gibt dem Nutzer eine Art Score zurück, um eine Zuverlässigkeit zu gewährleisten. Der Score wird mithilfe des $\chi ^{2}$-Test berechnet und basiert auf den Übereinstimmungen (Co-Occurence) von Markern und Krankheiten. Dieser Test benötigt für die Berechnung die true positives, true negatives, false positives, und false negatives eines spezifischen Biomarker und Krankheits Paares.
+
+\begin{itemize}
+\item{True positives sind definiert als die Anzahl von Übereinstimmungen von einem Paar Biomarker X und einer Krankheit Y.
+} 
+\item{False negatives sind definiert als die Anzahl von Suchtreffern von einem Biomarker X, jedoch ohne Krankheit Y.
+} 
+\item{False positives sind definiert als die Anzahl von Suchtreffern von einer Krankheit Y, jedoch ohne den Biomarker X.
+} 
+\item{True negatives sind definiert als die Anzahl von Suchtreffern von allen anderen Paare.
+} 
+\end{itemize}
+
+Generell kann gesagt werden, dass je mehr Übereinstimmungen in den Abstracts erreicht werden, desto besser ist der pValue und somit der Score. Die Aufgabe besteht nun darin die Suchfunktionen dahingehend anzupassen, sodass die neue Quelldatenbank einbezogen wird. Des Weiteren soll die Option existieren Krankheiten in einer Hierarchie-Ansicht zu veranschaulichen.

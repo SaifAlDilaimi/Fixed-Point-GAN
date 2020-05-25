@@ -1,0 +1,31 @@
+\renewcommand{\baselinestretch}{1.0}\normalsize
+\cleardoublepage
+\pagenumbering{Roman}
+{
+\renewcommand{\contentsname}{\textrm{\color{rubblue}\LARGE{Table of Contents}}}
+{\tableofcontents}
+\newpage
+\let\origaddvspace\addvspace
+ \renewcommand{\addvspace}[1]{}
+ %\begin{doublespacing}
+  %\vspace*{-4.5cm}
+ {\textrm{\listoffigures}}
+ %\end{doublespacing} % List of All Figures neu definiert
+ \newpage 
+ {\textrm{\listoftables}}
+ \vspace{2.75cm}
+ {\textrm{\color{rubblue}\LARGE List of Abbreviations}\\
+ \input{Acronym}
+ % Symbole
+ % \vspace{2.25cm}
+ %{\textrm{\color{rubblue}\LARGE Symbolverzeichnis}\\
+ %\input{Symbole}
+ %\renewcommand{\addvspace}[1]{\origaddvspace{#1}}
+}
+
+\newpage
+
+\cleardoublepage
+\pagenumbering{arabic}
+
+\renewcommand{\baselinestretch}{1.25}\normalsize
